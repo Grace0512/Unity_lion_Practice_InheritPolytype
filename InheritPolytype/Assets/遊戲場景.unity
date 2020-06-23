@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8108bb2710b6de943a37c8e40606eaec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 6
   people: []
   distance: []
 --- !u!54 &298842574
@@ -929,8 +929,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733424961}
-  m_LocalRotation: {x: 0.10816313, y: -0, z: -0, w: 0.9941332}
-  m_LocalPosition: {x: -0.34, y: 11.52, z: -20.53}
+  m_LocalRotation: {x: 0.6884197, y: 0.00020296033, z: -0.00022939307, w: 0.72531253}
+  m_LocalPosition: {x: 0.030408442, y: 17.852758, z: -1.7505269}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1803,6 +1803,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u8B66\u5BDF"
       objectReference: {fileID: 0}
+    - target: {fileID: 8619338778009079851, guid: 47a3741b253f088469eedd6d403dd89a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8619338778009177163, guid: 47a3741b253f088469eedd6d403dd89a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1900,7 +1905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd25646a0c1eb6243a9d392f444bbdc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 1
   people: []
   distance: []
   stop: 3

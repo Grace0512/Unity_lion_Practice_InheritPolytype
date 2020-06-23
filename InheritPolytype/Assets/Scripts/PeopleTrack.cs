@@ -41,32 +41,48 @@ public class PeopleTrack : People
 
         for(int i = 0; i < people.Length; i++)
         {
-            if (people[i].transform.name == "殭屍" || people[i].transform.name == "警察" || people[i]==null)
+            if (people[i] == null || people[i].transform.name == "殭屍" || people[i].transform.name == "警察")
             {
-                distance[i] = 999; //與殭屍物件的距離改為999
+                if (people[i] == null) distance[i] = 1000;
+                else distance[i] = 999; //與殭屍物件的距離改為999
                 continue; // 繼續→跳過並執行下一次迴圈
             }
            distance[i]= Vector3.Distance(transform.position, people[i].transform.position);
         }
         // 判斷最近
         float min = distance.Min();                     //最小值 = 距離.最小值
-       int index =  distance.ToList().IndexOf(min);     // 索引值 = 距離.轉清單.取得索引值(最小值)   
+        int index =  distance.ToList().IndexOf(min);     // 索引值 = 距離.轉清單.取得索引值(最小值)   
                
         target = people[index].transform;
         // 追蹤最近目標
         agent.SetDestination(target.position);
 
-        if (agent.remainingDistance <= 1f) HitPeople(); //如果距離小於1 傷害人類
+        if (agent.remainingDistance <= 1f && min!=999) HitPeople(); //如果距離小於1 傷害人類
     }
+
+    private float timerHit;
 
     private void HitPeople()
     {
-        target.GetComponent<People>().Dead();
+        if(timerHit>=1f)
+        {
+            timerHit = 0;
+            agent.isStopped = true;
+            ani.SetTrigger("攻擊");
+            target.GetComponent<People>().Dead();
+        }
+        else
+        {
+            agent.isStopped = false;
+            timerHit += Time.deltaTime;
+        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "火球")
         {
+            
             Dead();
         }
     }

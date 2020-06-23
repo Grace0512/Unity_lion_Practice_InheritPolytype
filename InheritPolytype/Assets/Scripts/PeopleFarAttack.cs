@@ -21,7 +21,10 @@ public class PeopleFarAttack : PeopleTrack
 
     protected override void Track()
     {
+        if (target == null) return;
         agent.SetDestination(target.position);
+        transform.LookAt(target);
+
         if (agent.remainingDistance <= stop) Attack(); //如果代理器.距離 < 停止距離就攻擊
     }
 
